@@ -1,0 +1,20 @@
+{
+  "name": "teajia",
+  "version": "1.0.0",
+  "description": "Premium Tea Collection Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server . -p 8000 -c-1 -o",
+    "start": "http-server . -p 8000"
+  },
+  "keywords": [
+    "tea",
+    "premium",
+    "collection"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

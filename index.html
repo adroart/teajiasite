@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teajia - Premium Tea Collection</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Serif+SC:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <button class="filter-toggle" id="filterToggle" aria-label="Toggle filters" aria-expanded="false">☰</button>
+            <div class="logo">
+                <div class="logo-text">Teajia</div>
+                <div class="logo-subtext">Premium Tea Collection</div>
+            </div>
+            <div class="header-spacer"></div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="layout-wrapper">
+        <!-- Sidebar Filters -->
+        <aside class="filter-sidebar" id="filterSidebar">
+            <!-- Search -->
+            <div class="filter-section">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Search teas..."
+                    aria-label="Search teas"
+                >
+            </div>
+
+            <!-- Recently Viewed -->
+            <div class="filter-section" id="recentlyViewedSection" style="display: none;">
+                <h3 class="filter-title">Recently Viewed</h3>
+                <div class="recent-teas" id="recentTeas"></div>
+            </div>
+
+            <!-- Filter Presets -->
+            <div class="filter-section">
+                <h3 class="filter-title">Curated Collections</h3>
+                <div class="preset-buttons">
+                    <button class="preset-btn" data-preset="beginners" aria-pressed="false">Best for Beginners</button>
+                    <button class="preset-btn" data-preset="premium" aria-pressed="false">Premium Selection</button>
+                    <button class="preset-btn" data-preset="value" aria-pressed="false">Best Value</button>
+                    <button class="preset-btn" data-preset="bold" aria-pressed="false">Bold Flavors</button>
+                </div>
+            </div>
+
+            <!-- Tea Type Filter -->
+            <div class="filter-section">
+                <h3 class="filter-title">Tea Type</h3>
+                <div class="filter-checkboxes" id="typeFilters"></div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="filter-section">
+                <h3 class="filter-title">Price per Gram</h3>
+                <div class="price-range">
+                    <input type="range" id="priceRange" min="0" max="100" value="100" class="price-slider">
+                    <span id="priceDisplay" class="price-display">All Prices</span>
+                </div>
+            </div>
+
+            <!-- Origin Filter -->
+            <div class="filter-section">
+                <h3 class="filter-title">Origin</h3>
+                <div class="filter-checkboxes" id="originFilters"></div>
+            </div>
+
+            <!-- Clear Filters -->
+            <div class="filter-section">
+                <button class="clear-filters-btn" id="clearFilters">Clear All Filters</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading tea collection...</p>
+            </div>
+
+            <!-- Tea Grid -->
+            <section class="tea-grid" id="teaGrid" role="grid">
+                <!-- Tea cards will be dynamically inserted here -->
+            </section>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-state" style="display: none;">
+                <p>Unable to load tea collection. Please try again later.</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p>No teas match your search. Try adjusting your filters.</p>
+            </div>
+
+            <!-- Statistics Dashboard -->
+            <section class="stats-section">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalTeas">0</div>
+                        <div class="stat-label">Total Teas</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalTypes">0</div>
+                        <div class="stat-label">Tea Types</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="inStock">0</div>
+                        <div class="stat-label">In Stock</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="" />
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle" class="modal-title"></h2>
+                    <p id="modalEnglishName" class="modal-english-name"></p>
+                    <div id="modalBadge" class="modal-badge"></div>
+
+                    <div class="modal-section">
+                        <h3>Origin</h3>
+                        <p id="modalOrigin"></p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Flavor Profile</h3>
+                        <p id="modalFlavor"></p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Brewing</h3>
+                        <p id="modalBrewing"></p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Stock Status</h3>
+                        <div id="modalStock" class="stock-status"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Backdrop -->
+    <div id="modalBackdrop" class="modal-backdrop" style="display: none;"></div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
