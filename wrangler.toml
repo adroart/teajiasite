@@ -1,0 +1,25 @@
+# Cloudflare Pages Configuration
+# This file is used for Wrangler CLI deployments
+# For GitHub integration, most of these settings are configured in the Cloudflare dashboard
+
+name = "teajia"
+compatibility_date = "2024-01-01"
+
+# Pages configuration
+pages_build_output_dir = "."
+
+# For local development with Wrangler
+[env.production]
+name = "teajia"
+
+[env.preview]
+name = "teajia-preview"
+
+# Build configuration (optional - can also be set in Cloudflare dashboard)
+# [build]
+# command = "npm run build"
+# cwd = "."
+
+# Environment variables (set these in Cloudflare dashboard for security)
+# [vars]
+# ENVIRONMENT = "production"

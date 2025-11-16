@@ -5,16 +5,24 @@
   "main": "index.html",
   "scripts": {
     "dev": "http-server . -p 8000 -c-1 -o",
-    "start": "http-server . -p 8000"
+    "start": "http-server . -p 8000",
+    "build": "echo 'No build step required - static site' && exit 0",
+    "preview": "http-server . -p 8000",
+    "deploy": "wrangler pages deploy . --project-name=teajia",
+    "cf:dev": "wrangler pages dev . --port=8000"
   },
   "keywords": [
     "tea",
     "premium",
-    "collection"
+    "collection",
+    "cloudflare-pages"
   ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

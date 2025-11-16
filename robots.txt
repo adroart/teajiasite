@@ -1,0 +1,14 @@
+# robots.txt for Teajia Premium Tea Collection
+
+User-agent: *
+Allow: /
+
+# Disallow private/admin areas (add as needed)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location (update with your actual domain once deployed)
+# Sitemap: https://yourdomain.com/sitemap.xml
+
+# Crawl-delay (optional, adjust as needed)
+Crawl-delay: 1

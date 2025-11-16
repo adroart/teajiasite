@@ -1,0 +1,15 @@
+# Cloudflare Pages Redirects Configuration
+
+# Redirect /home to root
+/home / 301
+
+# Handle common URL patterns
+/index /
+
+# Force HTTPS (this is handled by Cloudflare by default, but included for clarity)
+# All HTTP requests are automatically redirected to HTTPS by Cloudflare Pages
+
+# Fallback for 404 - serve index.html (useful if you add client-side routing later)
+# Note: Currently this is a single-page static site, so most 404s should show actual 404
+# Uncomment the line below if you add client-side routing:
+# /* /index.html 200
